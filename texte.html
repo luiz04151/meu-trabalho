@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site da Igreja</title>
+    <style>
+        body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* Menu */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #C7A249;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-bar .logo img {
+    height: 50px;
+}
+
+/* lista de links */
+.list-nav {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.list-nav li {
+    position: relative;
+}
+
+.list-nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.list-nav a:hover {
+    background: #CFCD7A;
+    border-radius: 5px;
+}
+
+
+
+.text-header {
+    color: #FFFFFF;
+    font-size: 24px; 
+}
+
+.text-header strong {
+    color: #ff66c4;
+}
+
+.text-header h3 {
+    font-size: 19px;
+    margin-bottom: 2px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    padding-bottom: 3px;
+    color: #FFFFFF;
+}
+
+
+/* Seções */
+section {
+    padding: 80px 20px;
+}
+
+
+
+section h2 {
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section h3 {
+    color: #000;
+    text-align: center;
+}
+
+section p {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000;
+}
+
+
+.container-escuro h3 {
+    color: #FFFFFF; 
+    z-index: 2;
+}
+
+
+/* Conteúdo principal */
+.p1 {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .list-nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #C7A249;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .list-nav.active {
+        display: flex;
+    }
+
+    .list-nav li:hover .submenu {
+        position: relative;
+        top: 0;
+        left: 0;
+        box-shadow: none;
+    }
+
+    .text-header h1 {
+        font-size: 40px;
+    }
+
+    .imagem-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .imagem-container p {
+        text-align: justify;
+    }
+
+     .pastoral, .pastoral.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pastoral-text {
+        text-align: center;
+    }
+
+}
+
+/* ---------- GALERIA / CARROSSEL ---------- */
+
+.carrossel-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+.carrossel-container img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+
+/* ---------- EVENTOS ---------- */
+
+.eventos-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.evento-card {
+    background: white;
+    width: 260px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.evento-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+/* ---------- GRUPOS / DIFERENCIAIS ---------- */
+
+.grupos-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.grupo-card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+    </style>
+  
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header style="padding: 20px; background: #C7A249; display: flex; justify-content: space-between; align-items: center;">
+
+     
+        
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="logo">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN_8WNxURZccAFmOAg-I1OnofrqxZlfrykzjs1dFV6NL0IABlNwZlN4Ku57QSWvOevssG1p7NCH37iC_p9xFu4Crdt5F_hHjVs7PGsUSo7zrmtwuc1gbRRtNbBfR_f_Pr4WI5zvDQeNyBo7UbU-W7WEwQ=w581-h633-s-no-gm?authuser=0" alt="Logo da Igreja" style="height: 60px;">
+            </div>
+
+            <a href="#eventos" 
+               style="
+                    padding: 10px 18px; 
+                    background: #007bff; 
+                    color: white; 
+                    text-decoration: none; 
+                    border-radius: 6px; 
+                    font-weight: bold;
+               ">
+                Eventos
+            </a>
+        </div>
+
+         <!-- Botão hambúrguer -->
+        <div class="menu-toggle" id="menu-toggle">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOK4hDVfDtEyXtP6zCxQUPDnC1ZGjpENMv3zZyok4zFcYK140u0kmt7yxitnkVDNBXhcwaghqYizQbV4iIjoKsE7Sg5u-7x7yURREQauBtCQmCo6r39bSDy49IPKlRhrK1kB71-ScZN9kLY2xswY9IgvA=w50-h50-s-no-gm?authuser=0" alt="botao">
+        </div>
+
+         <ul class="list-nav" id="menu">
+            <a href="#pastorais"><strong>Pastorais</strong></a> 
+            <a href="#serviços"><strong>Serviços</strong></a> 
+            <a href="#dizimo"><strong>Dizímo</strong></a> 
+            <a href="#contato"><strong>Contatos</strong></a>
+         </ul>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+    
+  <section id="inicio"  
+    style="
+        padding: 80px 20px;
+        text-align: center;
+        background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMCvzSsovmKmXyfTlDt0bXFtUc0zyYT0gHQdYGH8i2k8z1CDL70t5klq2dWkxEZYuHv0HDxp6d9HKQK5X_5Z61IbMobqK7A8xRgd3PVjxIXdQNBIx8eZjmw2Jd60nEuDJzXlQnMhk9Yn-AfL0FpuSkliQ=w462-h633-s-no-gm?authuser=0');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
+    ">
+
+    
+    <div class text-header>
+        <div class= "text-header">
+        <h3>Seja Bem-Vindo!</h3> 
+    <h1 >Paróquia Santa Teresinha</h1>
+    </div>
+    </div>
+
+</section>
+
+
+
+    <!-- ================= CARROSSEL ================= -->
+    <section id="carrossel" style="padding: 40px 20px; background: #eee; text-align: center;">
+        <h2>Galeria / Destaques</h2>
+
+        <div style="
+            width: 100%; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            display: flex; 
+            gap: 20px; 
+            overflow-x: auto; 
+            padding: 10px;
+        ">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPHwPf9yX621Drn_wpcyXSUMQDXVqQ4qFjskbAamos0ueUUJefBBnxv0DEOYG2jwodIEb6F4wMLvCuTi7OQMcC33L_gkvgY47Eq8Fc9C5b66X2zSWeYT8PFVTqQlK2oWs9Rnl7duce7jczcMBjQ43STSA=w468-h633-s-no-gm?authuser=0" alt="Imagem 1" style="width: 300px; height: 200px; background: #ccc; object-fit: cover;">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczNgjPQljnrghy6dCE3uENjMyMD7XVZ582aK-7pUvt4nxguX7HEqFj-NnkDNb5Lcavf89Bd-WzMCB8ZMt58pUCgHp3syZkCEfEDYlhabjdS4QYJlkGE_FGLdv4MmnqQCCIr592SKoeA5RwrvrilPfWPZvw=w613-h456-s-no-gm?authuser=0" alt="Imagem 2" style="width: 300px; height: 200px; background: #ccc; object-fit: cover;">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczMQm4fb-tutxwOQwK7RaFAGgEt4M-26frXpXUmU8-PgNA0lRiCstEBzJ7y9GXVBrs2Hino7hlHMQN_QPKcOXocwl-kIbyvrMR7p9MKOzFDBlJqf84cVylQudmXTa8-aiQUmz1bf0_v2NSwVvMrxd8q4bg=w474-h633-s-no-gm?authuser=0" alt="Imagem 3" style="width: 300px; height: 200px; background: #ccc; object-fit: cover;">
+        </div>
+    </section>
+
+
+    <!-- ================= IGREJA ================= -->
+    <section id="igreja" style="padding: 60px 20px;">
+        <h2>Sobre a Igreja</h2>
+        <p>A Paróquia Santa Teresinha do Menino Jesus, no Dirceu II em Teresina, foi inaugurada em 18 de abril de 1987, impulsionada pela necessidade de um espaço religioso no bairro em crescimento. A igreja se tornou um importante centro de evangelização, catequese e atividades sociais, atendendo as famílias da região. A paróquia é conhecida pela sua forte atuação comunitária e por realizar eventos de fé e devoção, como celebrações com rosas, simbolizando os pedidos e bênçãos.</p>
+
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMCvzSsovmKmXyfTlDt0bXFtUc0zyYT0gHQdYGH8i2k8z1CDL70t5klq2dWkxEZYuHv0HDxp6d9HKQK5X_5Z61IbMobqK7A8xRgd3PVjxIXdQNBIx8eZjmw2Jd60nEuDJzXlQnMhk9Yn-AfL0FpuSkliQ=w462-h633-s-no-gm?authuser=0" alt="Imagem da Igreja" style="width: 100%; max-width: 600px; display: block; margin: 20px auto;">
+    </section>
+
+
+    <!-- ================= PADRES ================= -->
+    <section id="Padres" style="padding: 60px 20px; background: #f2f2f2;">
+        <h2>Padres / Líderes</h2>
+
+        
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOVuAzapLNSG5p5E1mMw3iwnlwZJr_X5SIng41SZta91ECBvg56Ce81mz_HxLJQJVNVjuqimuUbHE4Knbtl2ahm5EXosBaw6G4YgkIjBJLfCkC883b_-MQA11ZMiPd8xKZqnzFiePOq8c32CqPj5k6Piw=w476-h633-s-no-gm?authuser=0" alt="Foto do Padre" style="width: 100%;">
+                <h3>Pároco Pe. Rivaldo Muniz</h3>
+                
+                
+            </div>
+            
+             <div style="border: 1px solid #ccc; padding: 20px; width: 280px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOG4yXJ3kGL0nMvmV3wZTj6_l-3sbuia6GG5D4sbXE-xL_Lkfg-yp18mLHqdVsQBhVAh5efFc979L0T9K_rPB9eaayph7Sbj_Di4h7dn_Mzw5Cqb8J6y4OXTqyVlrISS7mtoujBTMMQzypw5Zu-JEbGow=w471-h633-s-no-gm?authuser=0" alt="Foto do Padre" style="width: 100%;">
+                <h3>Vigário Pe. Francisco Gil</h3>
+                
+                
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOgX7q_uy-nTZ6k0wb08T9ieUCTQ1Y4EYpI07JHiuozd_GXMOQaJNq1GBUswmJekhPt_7OpqkgkU7eJgV9QO0g4SsT0OZhCLKfzxyxs1NeJSHq9M9mgsCrZiPeeDOgosw9VUcBSHMaIli4kHQnCdUO73w=w475-h633-s-no-gm?authuser=0" alt="Foto do Padre" style="width: 100%;">
+                <h3>Diácono Cícero</h3>
+                
+                
+            </div>
+            
+        </div>
+        
+        
+    </section>
+
+
+    <!-- ================= EVENTOS ================= -->
+    <section id="eventos" style="padding: 60px 20px;">
+        <h2>Eventos / Festejos</h2>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;justify-content: center;">
+            <div style="border: 1px solid #ccc; padding: 10px; width: 280px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOcCtNklk_MynanoIqTe7oJAMYxEEfqo8HS4MCXsL9pWMtH3JTxEaZgYreV0WukxGdlW2w2hkKqoLMjNOuy0QbrsEJcJzFY74YDba20srhX5nFIqjmcDMq1zOjxyoyczQ9EPv-UA8TG7nK92rTmeanmpA=w568-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Missa com Rosas</h3>
+                <p>Data: Todo primeiro dia do mês.</p>
+                
+            </div>
+
+             <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOdwMMMzQIxoy_xLsiDN0eznuDCU3KtdqJa-5SfqXW3dxj9UTvDtm4uOpGYN6I0OlyXgZppAXe0_D7DPZ9syZIEEh-3ShlK8e-4oSgLZduZ5ituOgrg_bwdJlXWR-G0FJjBZp0gCFAAEjQ02kPT5SJUsQ=w519-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Festejo de Santa Teresinha</h3>
+                <p></p>
+                
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNCzqpyiqxqhxus_P06FG5atm23g7GO0G6wDGn2L40kQZNpautwCNTEWngSVRMaaYTo086N_os1IeewXZyLSOtRBmJUwRHkHLr4587hfhf_EMNFlV9kaqSPeKPOsq032iRkoaUVScuGbykchSZohrNjsQ=w569-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Festejo de Santa Teresa Verzeri</h3>
+                <p></p>
+                
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczP8S6ejVwIjdAhzh-9pp7sU-FaeG5srWghcC1VKPRop5qrEKBhwZlhuntayeKuTwy4ARUnBXCQRl9tlJFv_7ap26GCJwq-yoSnxpXcaZnlkoQZOVlUqZsQrCUmhmKRQ75_5lp0-LbjZ8wQ-TS2M8DQ74w=w565-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Santa Missa aos Domingos</h3>
+                <p></p>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= GRUPOS / DIFERENCIAIS ================= -->
+    <section id="grupos" style="padding: 60px 20px; background: #fafafa;">
+        <h2>Grupos & Diferenciais</h2>
+
+        <p style="max-width: 700px; margin: 10px auto; text-align: center;">
+            Conheça os ministérios, grupos e diferenciais que tornam nossa igreja única.
+        </p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
+
+           <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMLF6kVl3qSeukTWnDeelbsNe-J3P6hE7Be3HXUV5Fc_NyOBQOJXx48giveBnjgDv6a4O4JDGeebllxZ9EdywFNLsavT9n8ZzurLiHXra3QbRQXdTyMZ8PeTKGW0EySY5cgDXFOk4KgW0k2IgKy2kVVyQ=w568-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Adoração</h3>
+                <p></p>
+                
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMMJFflx5bhE2lol_aapNbGYmUip6Uf9SfMavaxMwIqeVb4FaQVYBmNyoEHYOXJLHirgLQ4tKW0xNKlZI3Bj_HSfnk-_eiyD1XQvy5Flo8CseOswVbzVKv47v9PnoRZuRSBI9JneFPQhMtQ3ZMEnSKWdw=w568-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Vigília Jovem</h3>
+                <p></p>
+                
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 10px; width: 290px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOOwhMSqdxybDSMkGHF6dQ7y88FcFcjDwmVJ4aEmUUTXvsXdXYTecD6uuzwWSZxVsimTYE98FV9JIvy-FAJIOMwQMzwFBZB5aGa2bOorzuTxNnIEqtfa1nYsBMdcO4Uqae4RENavmeYzfx9UjhJoO6iUQ=w567-h633-s-no-gm?authuser=0" alt="Evento" style="width: 100%;">
+                <h3>Grupões EJC</h3>
+                <p></p>
+                
+            </div>
+
+        </div>
+    </section>
+
+    
+    <!-- ================= LISTA DE PASTORAIS ================= -->
+    <section id="pastorais" style="padding: 60px 20px; max-width: 1000px; margin: auto;">
+        <h2 style="text-align:center;">Pastorais e Movimentos</h2>
+        <p style="text-align:center; max-width:700px; margin:auto;">
+            Conheça as pastorais que atuam na Paróquia Santa Teresinha e fazem parte da missão de evangelizar e servir a comunidade.
+        </p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; justify-content: center;">
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNwzO4lYzUr9Z1Bj0YsmijBdVJMhXRlXAAkDIlyX8Xp-fPwuXY45vrWJm9iCt3U-mo1-l6HEn9CiRh7bzhn8cNlAhgGkgYhM8iPnA2TDdcKa0FhpzGT8B8qp6XY1wOq_t0CFenamZEnV-YPjdcDMkgIhA=w641-h633-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Pastoral da Liturgia</h3>
+                <p>Responsável pela organização das celebrações litúrgicas e serviços do altar.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczPp0HJu-Q0F4Xjd2Rbr02q9Yy8BTmzmqXbpt4QEGsoMGJpg5ebHjZsP7csapWO2mLYVcmWd9A-HcfdRWok6Oi9O5Panu6A_8OjhRm_jI14Wep4phzV101ifqWkhMf855nS98pl2wXjvR618oKSkJon4cQ=w450-h372-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Pastoral da Pascom</h3>
+                <p>A PASCOM é o setor da paróquia que usa a comunicação para unir a comunidade e espalhar a mensagem do Evangelho.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMIp1RSxeFDSY3lBUMWptBtQzaypeQLVN0CmYGntpME7YALsnheLzMczYiVBgF3Wi3F8ulyctXeutzFToHaNFSG28EcJx4v-2B8vW2UxkiOwU98GgI2yUTq2LMVz1xp-Gmb8gUIdd-0m0jm0DDte0SyzQ=w950-h633-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Pastoral da Acolhida</h3>
+                <p>Equipe responsável por receber os fiéis e visitantes em nossas celebrações.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNFobcSPhorb8Bu1y1SmwI0pmBe2dKpJQGgXtgyWB85g1stT5jefy8oEE-6QgB2muS6azXTzfvSlAWAxgIMIDehTqdqr5VIXE9bwUfZZkouW1GWfIyRX9pFycAo9ezbFV5Wcd8DgsLubUGaQcoiDpr5Pw=w229-h220-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Catequese</h3>
+                <p>Formação cristã para crianças, jovens e adultos rumo aos sacramentos.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMQ4NpN0cvR-R1hEeBaZuS9xS4wCr3sn6e_kOR2xR_LzZhKxKK3vUct9sik-kIVCjcLjUCKDWX5mB1B6awE8niV_ntKWtCPehSJ5ZEF4JnPWXPJ39j4FZjUC4qqm4LyMMTERQAOl1s2Slw38Abr7TxU4Q=w603-h633-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Batismo</h3>
+                <p>A Pastoral do Batismo prepara pais e padrinhos para que se tornem os primeiros e principais educadores da criança na fé.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN-CjNZF5Tpp-hJMyxy6KvmElx-D04wDR6nhaC642zz-xo6xVhALAPxhBqcUbj9y139TjDpiHVMENtyjDAhieQzwmm6OAfCoLBitGsUlHIOC_Gnh6xBWnRysTGHwoFoP_INkZhBBJhHC85Sco-sVM2UQg=w500-h341-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Dizímo</h3>
+                <p>Esta pastoral educa a comunidade sobre a importância espiritual do dízimo, incentivando a partilha como uma expressão prática da fé, união e missão cristã.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNzreuirr0Jfvrlip1T1SBowuDVHzM9C1mMMGoJRfHK8ENtnytfGePeqJ8Cva2O8nmljikkDFSthNSnjputLnqoIcxAurdcxrGRhGRNq5q27J9I4n0Mu13ZUn4MzjmVmwT8_ueWjq_8CLt_jvOqAm9LjQ=w867-h633-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Pastoral Familiar</h3>
+                <p>Ministério dedicado ao cuidado e formação das famílias da paróquia.</p>
+            </div>
+
+          
+
+          
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczM7F64eEGj1RbLm_NuEy9s8skRxM9MrLJkEpgUzzHr5ph47LPBosExb3a-oBc2epPO0EaIcPtOLAmi6Vdenqt-YPNE6myZXbwOSPGoM29vQ-8zHH0TibNNXrNS80BiZmg69Ifur7D4lLwxB_YFOxJDNEw=w500-h500-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Ministros Extraordinários da Sagrada Comunhão</h3>
+                <p>O ministro distribui a Eucaristia, servindo a comunidade com maior dedicação e colaborando com as atividades da Igreja para a missão evangelizadora.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczO_PAB3VdqZ4dFiwBbIy9z92x1qXoDDhpoXeKS-BZ8MAh8TQhF4NALKhmyYxk1mvKRF7CLiJaJXaVGSndg9YxdHq31YXjAd04Eq9nUpVrL6moo1Pfbmo6-sXQ9lK1Jguw_N7T1SWX82qUH1snKpXbNW2A=w427-h600-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Acólitos e Coroinhas</h3>
+                <p>O Acólito é o auxiliar do altar, ajudando o padre e o diácono na Missa e cuidando dos objetos e preparativos essenciais para a liturgia.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMQPiGn_VRynz5Ocw2LeoGzqpDNsD8dlTB-HjCTc2l3nTWcxOqgfAx80d1mMxeYyO6SwdinqYTm4j73SIpYIHLEEBKCDTYaEHisMZCt_0xCupmju2Hmzv9hwzIQ-kMnjkoAESRFz2BbsLhDARa2PIonqA=w270-h500-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Legião de Maria</h3>
+                <p>É um grupo de leigos católicos que, inspirados em Maria, buscam a santidade pessoal e servem a Igreja e a comunidade por meio da oração e de obras de caridade.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMqmC62PZu7sDWoqCuwXjzdLD1PdDkL8oQ3tj3oBhv04zRGeIvpHnFtOyt4fEEzc7BThlLW2ul9g4M4hJsLT4Os8NrnouQIBFSQQCPNCG0Z1mEafa9BH7UknFD38PJ-hRMM4p_OfiJOoiM6n54tIWQGQA=w224-h224-s-no-gm?authuser=0" alt="Pastoral" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Apostolado da Oração</h3>
+                <p>É um movimento de fiéis que se dedicam à oração diária e ao oferecimento de suas vidas a Deus, em união com o Sagrado Coração de Jesus, pelas intenções da Igreja.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= GRUPOS E SERVIÇOS ================= -->
+    <section id="serviços" style="padding: 60px 20px; max-width: 1000px; margin: auto;">
+        <h2 style="text-align:center;">Nossos Serviços</h2>
+        <p style="text-align:center; max-width:700px; margin:auto;">
+            Conheça os principais grupos,  serviços e ministérios que contribuem para a vida comunitária e espiritual da Paróquia Santa Teresinha.
+        </p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; justify-content: center;">
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMjmGRSVzeIn2382791njNEmEkOrkwMVnYSPbqFDCIC16zFbxaX5Y_DWBt5-IpnGa6s1gcwb_VbWFnEiF8ZeW-KHK9D9S6sr5U51qq_mrcJc3PVneTpXuSCT2HiMUWbGlO0D_d9SwsyN0pWHf0Xl8Pl0w=w422-h633-s-no-gm?authuser=0" alt="Grupo" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Encontro de Jovens com cristo</h3>
+                <p>O EJC é um processo de evangelização que promove a conversão do jovem, levando-o a um encontro pessoal e profundo com Deus, incentivando seu engajamento na vida da Igreja.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOkADvf4xum7dOyQsDxiQkbHTp6PWSbsHNvPEmsGdEA9WI7yENswfqH6_rRJxjEHdQdijHNYhU_m3PJXRE1bgg6Zl-BGiF2cZmVgeDSVK__MtYJcTRhCj0LyAxTbAtQl04AtGfHtxTp6DkPqaB28GvXDQ=w608-h633-s-no-gm?authuser=0" alt="Grupo" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Encontro de Casais com Cristo</h3>
+                <p>O ECC é um retiro para casais que busca renovar o diálogo e o compromisso conjugal, fortalecendo a espiritualidade do casal e sua vida em família, com o apoio contínuo da comunidade.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNwtUxiiuLp3J5KQhwf7brWqY24e6AiTcNQf-t4Osk3FwnR7nIozklIlak19JJqTm_Kspqw_0BohLO35eBJfL5JhOVPDfzI7fxvqfZgBTmgPqK4jw6ijL1Tjh6qx7_6ikLiOqVy48-_VAmkUnAhWg_YMg=w492-h326-s-no-gm?authuser=0" alt="Grupo" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Renovação Carismática Católica</h3>
+                <p>A RCC é um movimento que enfatiza a experiência pessoal e carismática com o Espírito Santo, utilizando o louvor e os dons para renovar a fé e evangelizar ativamente na Igreja.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczPaelZgGluS95YQypvxJQwEgsNfcLETAon_7eZH-2yk9B6eYe0yeoaC-9gye5NEPHGc1CjpRRxO7BwXCJI7W7MZBTJ2QH5ynwFA7DfGB855hoRTHmUhowccU1HmrDyP_bxEW2Uz_Q8w8h8lxeV21e-JZw=w722-h633-s-no-gm?authuser=0" alt="Grupo" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Mães que oram pelos filhos</h3>
+                <p>É um movimento de oração materna focado na transformação espiritual da mãe, que se torna o canal de evangelização para restaurar a fé e os valores cristãos em sua família.</p>
+            </div>
+
+            <div style="border: 1px solid #ccc; padding: 20px; width: 280px; background:#fafafa; border-radius:10px;">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNa3lJHzEA0X19quKdmev5MHiUeeg_O50p_MnuYcg9pHMC8ieVEt6u200lQEzxiKsxk6REmhfhCXK-2aUsvqwYn3WDIP2w2Oo9JEvyLVvDR9DdT0LOrDbTVEyVjHCDkL1Be-J-Fu2SwKq5-El9nqpaI_Q=w254-h300-s-no-gm?authuser=0" alt="Grupo" style="width: 100%; height: 180px; object-fit: cover; border-radius:8px;">
+                <h3>Terço dos Homens</h3>
+                <p>É um movimento que reúne homens para rezar o terço, fortalecendo sua fé, sua família e seu papel na Igreja e na sociedade.</p>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- ================= FORMAS DE DOAÇÃO ================= -->
+    <section id="dizimo" style="padding: 60px 20px; max-width: 800px; margin: auto; text-align: center;">
+        <h2>Dizímo / Doações</h2>
+        <p>
+            Sua contribuição ajuda a manter nossa igreja, ações sociais, celebrações e toda a estrutura de evangelização.
+            Agradecemos profundamente sua generosidade!
+        </p>
+
+        <div style="margin-top: 40px; text-align: left; background: #f7f7f7; padding: 25px; border-radius: 10px; border: 1px solid #ddd;">
+            <h3><strong>Doações via PIX :</strong></h3>
+            <p>86 98877-9778</p>
+
+            <h3 style="margin-top: 25px;"><strong> Oferta / Depósito via CNPJ:</strong></h3>
+            <p>CNPJ: 06.516.967/0036-37</p>
+
+            <h3 style="margin-top: 25px;"><strong> Dúvidas ou Comprovantes:</strong></h3>
+            <p>Enviar para o WhatsApp oficial da secretaria paroquial:</p>
+            <p><a href="https://api.whatsapp.com/send/?phone=5586988779778">(86) 9 98877-9778</a></p>
+        </div>
+    </section>
+
+
+    <!-- ================= AGRADECIMENTO ================= -->
+    <section style="padding: 60px 20px; background: #fafafa; text-align: center;">
+        <h2>Gratidão por sua Generosidade</h2>
+        <p>"Deus ama quem dá com alegria." (2Cor 9,7)</p>
+        <p>
+            Cada contribuição é um gesto de amor que fortalece a fé, a comunidade e a missão da nossa paróquia.
+        </p>
+    </section>
+
+
+
+    <!-- ================= CONTATO ================= -->
+    <section id="contato" style="padding: 60px 20px; background: #f2f2f2;">
+        <h2>Contato</h2>
+        <p><a href="https://api.whatsapp.com/send/?phone=5586988779778"><strong>WhatsApp</strong></a>: (86) 9 98877- 9778</p>
+        <p><a href="https://www.instagram.com/paroquiasantateresinhadirceu/"><strong>Instagram</strong></a>: @paroquiasantateresinhadirceu</p>
+        <p><a href="https://www.youtube.com/channel/UCJmVEF-RM_vcmKO90cU2nsw"><strong>YouTube</strong></a>: @paroquiadesantateresinhado919</p>
+        <p><a href="https://maps.app.goo.gl/spjC5NR9tYVZF7Ng6"><strong>Endereço</strong></a>: Rua José Ebaid, 1047 - Dirceu II</p>
+    </section>
+
+      <!-- Script do menu -->
+    <script>
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+    </script>
+
+  </body>
+</body>
+</html>
